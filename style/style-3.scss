@@ -1,0 +1,172 @@
+@mixin border-style($border, $radius) {
+  border: $border;
+  border-radius: $radius;
+}
+
+@mixin disable-touchscreen-zoom {
+  touch-action: manipulation;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body,
+html {
+  width: 100%;
+  height: 100%;
+  font-size: 18px;
+  scroll-behavior: smooth;
+  position: relative;
+}
+
+#bg {
+  position: fixed;
+  top: -7%;
+  left: -7%;
+  width: 115%;
+  height: 115%;
+  background-color: black;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  filter: blur(50px) brightness(0.9);
+}
+
+#container {
+  position: relative;
+  width: 100%;
+  min-height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  padding: calc(1rem + env(safe-area-inset-top))
+    calc(1rem + env(safe-area-inset-right))
+    calc(1rem + env(safe-area-inset-bottom))
+    calc(1rem + env(safe-area-inset-left));
+
+  > * {
+    margin-bottom: 1rem;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+#back {
+  margin-right: auto;
+  display: flex;
+  align-items: center;
+  color: white;
+
+  img {
+    height: 2em;
+    margin-right: 0.5rem;
+  }
+}
+
+.images {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: flex-start;
+  width: 100%;
+
+  .image {
+    @include border-style(5px solid black, 0);
+    @include disable-touchscreen-zoom();
+    width: 100%;
+    margin-bottom: 1rem;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    img {
+      max-width: 100%;
+      max-height: 100%;
+    }
+  }
+}
+
+.text {
+  display: inline;
+  color: white;
+
+  h1 {
+    font-size: 2em;
+    margin-bottom: 0.5em;
+  }
+
+  p {
+    text-align: justify;
+    text-justify: auto;
+    font-size: 1em;
+    line-height: 1.5em;
+  }
+}
+
+@media screen and (min-width: 40em) {
+  #back {
+    position: absolute;
+    bottom: 1rem;
+    left: 1rem;
+  }
+
+  .images {
+    justify-content: space-around;
+    .image {
+      width: 20em;
+    }
+  }
+}
+
+@media screen and (min-width: 60em) {
+  #container {
+    height: 100%;
+    align-content: flex-start;
+  }
+
+  .images {
+    height: min-content;
+
+    .image {
+      width: auto;
+      max-width: 17em;
+    }
+  }
+}
+
+@media screen and (min-width: 71em) {
+  #container {
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+
+    > * {
+      margin-bottom: 0;
+    }
+
+    .images {
+      flex: 1 1 auto;
+    }
+
+    .text {
+      flex: 2 0 auto;
+    }
+  }
+
+  .images {
+    width: max-content;
+    justify-content: space-around;
+    align-content: center;
+    flex-wrap: nowrap;
+    margin-top: 0;
+
+    .image {
+      margin-bottom: 0;
+      margin-right: 1rem;
+    }
+  }
+}

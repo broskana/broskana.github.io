@@ -1,0 +1,125 @@
+@mixin safe-padding-sides {
+  padding-right: calc(env(safe-area-inset-right) + 1rem);
+  padding-left: calc(env(safe-area-inset-left) + 1rem);
+}
+
+.fixed-wrapper {
+  #header {
+    padding-top: calc(env(safe-area-inset-top) + 0.5rem);
+    padding-right: 1rem;
+    padding-bottom: 0.5rem;
+    padding-left: 1rem;
+
+    .home-button {
+      padding: 0;
+
+      @media screen and (min-width: 40em) {
+        margin-right: 1rem;
+      }
+
+      @media screen and (min-width: 741px) {
+        padding-top: 0.35rem;
+      }
+    }
+
+    .buttons {
+      margin-bottom: 0.5rem;
+
+      a {
+        margin-right: 0.5rem;
+
+        &:last-child {
+          margin-right: 0;
+        }
+      }
+
+      @media screen and (min-width: 30em) {
+        margin-bottom: 0;
+        margin-right: 1.2rem;
+      }
+    }
+
+    .control {
+      @media screen and (min-width: 40em) {
+        margin-left: auto;
+      }
+    }
+
+    @media screen and (orientation: landscape) {
+      @include safe-padding-sides();
+    }
+  }
+
+  .content {
+    main {
+      padding-right: 1rem;
+      padding-left: 1rem;
+
+      @media screen and (orientation: landscape) {
+        @include safe-padding-sides();
+      }
+    }
+
+    .windows {
+      padding-top: 1rem;
+      padding-right: 1rem;
+      padding-bottom: 1rem;
+      padding-left: 1rem;
+
+      @media screen and (orientation: landscape) {
+        @include safe-padding-sides();
+      }
+
+      .window {
+        margin-bottom: 1rem;
+        position: relative;
+
+        @media screen and (min-width: 45em) {
+          margin-right: 1rem;
+
+          &::after {
+            content: "";
+            display: block;
+            position: absolute;
+            z-index: -2;
+            top: 0;
+            left: 0;
+            width: calc(100% + 1rem);
+
+            &:last-child {
+              width: calc(100% + 1rem + env(safe-area-inset-right));
+            }
+            height: 100%;
+          }
+        }
+
+        @media screen and (min-width: 71em) {
+          margin-right: 0;
+
+          &::after {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+
+  .footer {
+    padding: 1rem;
+    margin-right: calc(1rem + env(safe-area-inset-right));
+    margin-bottom: calc(1rem + env(safe-area-inset-bottom));
+    margin-left: calc(1rem + env(safe-area-inset-left));
+
+    &::after {
+      content: "";
+      display: block;
+      position: absolute;
+      width: 100%;
+      height: calc(3rem + env(safe-area-inset-bottom));
+
+      @media screen and (min-width: 71em) {
+        height: calc(2rem + env(safe-area-inset-bottom));
+      }
+    }
+  }
+}

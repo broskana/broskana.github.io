@@ -1,0 +1,346 @@
+@import url("https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&family=Major+Mono+Display&family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto+Mono:wght@300;400&family=Sen:wght@400;700;800&display=swap");
+
+// Fonturi
+$Comfortaa: "Comfortaa", cursive; /* 300 - 700 */
+$Major-Mono: "Major Mono Display", monospace; /* 400 */
+$Roboto-Mono: "Roboto Mono", monospace; /* 300, 400 */
+$Sen: "Sen", sans-serif; /* 400, 700, 800 */
+$Montserrat: "Montserrat", sans-serif; /* 100 - 900 + italic */
+
+// Culori
+@function light-aqua($l: 80%, $a: 1) {
+  @return hsla(166%, 68%, $l, $a);
+}
+@function light-green($l: 69%, $a: 1) {
+  @return hsla(101%, 65%, $l, $a);
+}
+@function white($l: 99%, $a: 1) {
+  @return hsla(30%, 100%, $l, $a);
+}
+@function blue($l: 36%, $a: 1) {
+  @return hsla(188%, 100%, $l, $a);
+}
+@function green($l: 48%, $a: 1) {
+  @return hsla(99%, 59%, $l, $a);
+}
+
+.fullscreen-popup {
+  .fullscreen-message {
+    background-color: white();
+    border-radius: 10px;
+
+    .text {
+      &.head {
+        font-family: $Sen;
+      }
+
+      &.body {
+        font-family: $Montserrat;
+      }
+    }
+  }
+}
+
+h2,
+h3,
+h4 {
+  font-family: $Sen;
+}
+
+#header {
+  background-color: blue();
+  box-shadow: 0px -8px 21px 14px rgba(0, 0, 0, 0.5);
+
+  #title {
+    color: white();
+    font-family: $Comfortaa;
+    font-weight: 700;
+    transition: filter 100ms ease-in-out;
+
+    &:focus {
+      outline: 2px solid green(50%);
+    }
+
+    &:hover {
+      filter: drop-shadow(0 0 5px white(99%, 0.5));
+    }
+  }
+
+  .buttons {
+    a {
+      padding: 0.33rem;
+      border-radius: 10px;
+      background-image: url("../resource/froggy/frogicher.png");
+      background-color: white();
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: left;
+      color: black;
+      font-family: $Sen;
+      letter-spacing: 0.05em;
+      font-size: 0.9em;
+      transition: filter 100ms ease-in-out, background-image 100ms ease-in-out;
+
+      &:focus {
+        outline: 2px solid green();
+      }
+
+      &:hover {
+        filter: drop-shadow(0 0 3px white(99%, 0.5));
+        background-image: url("../resource/froggy/frogicher_flip.png");
+      }
+    }
+  }
+
+  .control {
+    transition: filter 100ms ease-in-out;
+
+    &#show-sidewindows {
+      &::after {
+        color: white();
+        font-family: $Sen;
+      }
+    }
+
+    &:focus {
+      outline: 2px solid green();
+    }
+
+    &:hover {
+      filter: drop-shadow(0 0 2px white());
+    }
+  }
+}
+
+#porecle {
+  background-image: linear-gradient(blue(), blue(67%));
+  $shadow: rgba(0, 0, 0, 0.5);
+  box-shadow: 5px 5px 10px 0 $shadow;
+
+  #porecle-hide {
+    position: relative;
+
+    &::after {
+      content: "Închide!";
+      font-family: $Montserrat;
+      font-size: 0.8em;
+      position: absolute;
+      top: 33%;
+      right: 2em;
+      margin-left: 0.2rem;
+      color: white();
+      opacity: 0;
+      width: 0;
+      overflow: hidden;
+      transition: opacity 100ms ease-in-out, filter 100ms ease-in-out,
+        width 100ms ease-in-out;
+    }
+
+    &:focus {
+      outline: 2px solid green();
+    }
+
+    &:hover,
+    &:focus {
+      &::after {
+        width: 4em;
+        opacity: 1;
+      }
+
+      filter: drop-shadow(0 0 2px white(99%, 0.5));
+    }
+  }
+
+  h4 {
+    font-family: $Sen;
+    font-weight: 700;
+    color: white();
+  }
+
+  .porecla {
+    background-color: white();
+    border-radius: 10px;
+    font-family: $Montserrat;
+    font-weight: 500;
+    font-size: 0.7em;
+  }
+}
+
+blockquote {
+  font-family: $Montserrat;
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 0.3em;
+  }
+
+  &.external-cite {
+    $external-cite-bgcol: light-green(69%, 0.3);
+    background-color: $external-cite-bgcol;
+
+    &::before {
+      background-color: opacify($color: $external-cite-bgcol, $amount: 0.5);
+    }
+  }
+}
+
+a {
+  font-family: $Montserrat;
+  font-weight: 600;
+  text-decoration: none;
+  color: inherit;
+  transition: filter 100ms ease-in-out;
+
+  &.external-link {
+    $external-link-col: light-green(50%, 1);
+    color: $external-link-col;
+
+    &:visited {
+      color: darken(
+        $color: adjust-hue($color: $external-link-col, $degrees: -30),
+        $amount: 1%
+      );
+    }
+
+    &:focus {
+      outline: 2px solid desaturate($color: blue(50%), $amount: 20%);
+    }
+  }
+
+  &.internal-link {
+    $internal-link-col: blue(45%, 1);
+    color: $internal-link-col;
+
+    &:visited {
+      color: darken(
+        $color: adjust-hue($color: $internal-link-col, $degrees: -30),
+        $amount: 2%
+      );
+    }
+
+    &:focus {
+      outline: 2px solid green();
+    }
+  }
+
+  &:hover {
+    filter: brightness(0.8);
+  }
+}
+
+.content {
+  main {
+    p {
+      font-family: $Montserrat;
+    }
+
+    ul {
+      font-family: $Montserrat;
+    }
+  }
+}
+
+label.switch {
+  span {
+    font-family: $Montserrat;
+    font-weight: 500;
+
+    span,
+    img {
+      transition: filter 100ms ease-in-out;
+    }
+  }
+
+  input {
+    opacity: 0;
+  }
+
+  &:focus {
+    outline: 2px solid light-blue(60%);
+  }
+
+  &:hover {
+    > span span {
+      filter: drop-shadow(0 0 3px white(99%, 0.5));
+    }
+  }
+}
+
+.slideshow {
+  .button {
+    &:focus {
+      outline: 2px solid light-blue(60%);
+    }
+
+    &:hover {
+      filter: drop-shadow(0 0 5px white(99%, 0.8));
+    }
+  }
+}
+
+.time {
+  font-family: $Major-Mono;
+  font-size: 3em;
+  padding-bottom: 0.5rem;
+}
+
+.date {
+  font-family: $Roboto-Mono;
+  text-transform: uppercase;
+  padding-left: 0.34rem;
+  font-weight: 400;
+}
+
+.windows {
+  .window {
+    border: none;
+    border-radius: 10px;
+    background-image: linear-gradient(green(), green(60%));
+    color: white();
+    box-shadow: 5px 5px 10px 0 rgba(0, 0, 0, 0.5);
+
+    &:nth-child(2n) {
+      background-image: linear-gradient(green(60%), green());
+    }
+  }
+}
+
+.footer {
+  border: none;
+  background-color: blue();
+  border-radius: 10px;
+  box-shadow: 0px 0px 20px 2px rgba(0, 0, 0, 0.5);
+  z-index: 1;
+  color: white();
+}
+
+.tooltip {
+  font-family: $Montserrat;
+
+  .tooltip-text {
+    background-color: saturate($color: blue(30%, 0.5), $amount: 10%);
+    border-radius: 5px;
+    padding: 0.6em;
+    overflow: hidden;
+    width: 100%;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 100ms ease-in-out;
+  }
+
+  &:hover {
+    > .tooltip-text {
+      visibility: visible;
+      opacity: 1;
+    }
+  }
+}
+
+#signature {
+  font-size: 0.7em;
+}

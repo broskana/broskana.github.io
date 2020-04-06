@@ -1,0 +1,73 @@
+@import url("https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&family=Major+Mono+Display&family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto+Mono:wght@300;400&family=Sen:wght@400;700;800&display=swap");
+
+// Fonturi
+$Comfortaa: "Comfortaa", cursive; /* 300 - 700 */
+$Major-Mono: "Major Mono Display", monospace; /* 400 */
+$Roboto-Mono: "Roboto Mono", monospace; /* 300, 400 */
+$Sen: "Sen", sans-serif; /* 400, 700, 800 */
+$Montserrat: "Montserrat", sans-serif; /* 100 - 900 + italic */
+
+// Culori
+@function light-aqua($l: 80%, $a: 1) {
+  @return hsla(166%, 68%, $l, $a);
+}
+@function light-green($l: 69%, $a: 1) {
+  @return hsla(101%, 65%, $l, $a);
+}
+@function white($l: 99%, $a: 1) {
+  @return hsla(30%, 100%, $l, $a);
+}
+@function blue($l: 36%, $a: 1) {
+  @return hsla(188%, 100%, $l, $a);
+}
+@function green($l: 48%, $a: 1) {
+  @return hsla(99%, 59%, $l, $a);
+}
+
+#bg {
+  transition: background-image 1000ms ease-in-out;
+}
+
+.images {
+  .image {
+    border-color: white();
+    border-radius: 10px;
+    box-shadow: 9px 9px 23px 0px rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+
+    img {
+      border-radius: 4px;
+    }
+  }
+}
+
+$text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
+
+.text {
+  text-shadow: $text-shadow;
+
+  h1 {
+    font-family: $Sen;
+  }
+
+  p {
+    font-family: $Montserrat;
+  }
+}
+
+#back {
+  transition: filter 100ms ease-in-out;
+
+  span {
+    font-family: $Montserrat;
+    text-shadow: $text-shadow;
+  }
+
+  &:focus {
+    outline: 2px solid green();
+  }
+
+  &:hover {
+    filter: drop-shadow(0 0 3px, white(99%, 0.5));
+  }
+}

@@ -1,0 +1,134 @@
+.fixed-wrapper #header {
+  padding-top: calc(env(safe-area-inset-top) + 0.5rem);
+  padding-right: 1rem;
+  padding-bottom: 0.5rem;
+  padding-left: 1rem;
+}
+
+.fixed-wrapper #header .home-button {
+  padding: 0;
+}
+
+@media screen and (min-width: 40em) {
+  .fixed-wrapper #header .home-button {
+    margin-right: 1rem;
+  }
+}
+
+@media screen and (min-width: 741px) {
+  .fixed-wrapper #header .home-button {
+    padding-top: 0.35rem;
+  }
+}
+
+.fixed-wrapper #header .buttons {
+  margin-bottom: 0.5rem;
+}
+
+.fixed-wrapper #header .buttons a {
+  margin-right: 0.5rem;
+}
+
+.fixed-wrapper #header .buttons a:last-child {
+  margin-right: 0;
+}
+
+@media screen and (min-width: 30em) {
+  .fixed-wrapper #header .buttons {
+    margin-bottom: 0;
+    margin-right: 1.2rem;
+  }
+}
+
+@media screen and (min-width: 40em) {
+  .fixed-wrapper #header .control {
+    margin-left: auto;
+  }
+}
+
+@media screen and (orientation: landscape) {
+  .fixed-wrapper #header {
+    padding-right: calc(env(safe-area-inset-right) + 1rem);
+    padding-left: calc(env(safe-area-inset-left) + 1rem);
+  }
+}
+
+.fixed-wrapper .content main {
+  padding-right: 1rem;
+  padding-left: 1rem;
+}
+
+@media screen and (orientation: landscape) {
+  .fixed-wrapper .content main {
+    padding-right: calc(env(safe-area-inset-right) + 1rem);
+    padding-left: calc(env(safe-area-inset-left) + 1rem);
+  }
+}
+
+.fixed-wrapper .content .windows {
+  padding-top: 1rem;
+  padding-right: 1rem;
+  padding-bottom: 1rem;
+  padding-left: 1rem;
+}
+
+@media screen and (orientation: landscape) {
+  .fixed-wrapper .content .windows {
+    padding-right: calc(env(safe-area-inset-right) + 1rem);
+    padding-left: calc(env(safe-area-inset-left) + 1rem);
+  }
+}
+
+.fixed-wrapper .content .windows .window {
+  margin-bottom: 1rem;
+  position: relative;
+}
+
+@media screen and (min-width: 45em) {
+  .fixed-wrapper .content .windows .window {
+    margin-right: 1rem;
+  }
+  .fixed-wrapper .content .windows .window::after {
+    content: "";
+    display: block;
+    position: absolute;
+    z-index: -2;
+    top: 0;
+    left: 0;
+    width: calc(100% + 1rem);
+    height: 100%;
+  }
+  .fixed-wrapper .content .windows .window::after:last-child {
+    width: calc(100% + 1rem + env(safe-area-inset-right));
+  }
+}
+
+@media screen and (min-width: 71em) {
+  .fixed-wrapper .content .windows .window {
+    margin-right: 0;
+  }
+  .fixed-wrapper .content .windows .window::after {
+    display: none;
+  }
+}
+
+.fixed-wrapper .footer {
+  padding: 1rem;
+  margin-right: calc(1rem + env(safe-area-inset-right));
+  margin-bottom: calc(1rem + env(safe-area-inset-bottom));
+  margin-left: calc(1rem + env(safe-area-inset-left));
+}
+
+.fixed-wrapper .footer::after {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: calc(3rem + env(safe-area-inset-bottom));
+}
+
+@media screen and (min-width: 71em) {
+  .fixed-wrapper .footer::after {
+    height: calc(2rem + env(safe-area-inset-bottom));
+  }
+}
