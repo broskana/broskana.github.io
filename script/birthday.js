@@ -36,7 +36,7 @@ const birthday = {
     }
     return bday;
   },
-  redirect: () => window.location.href = 'roxi.html',
+  redirect: () => window.location.href = 'landing.html',
   count: function() {
     const now = new Date().getTime();
     const distance = this.date().getTime() - now;
